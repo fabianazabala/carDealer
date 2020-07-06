@@ -10,7 +10,6 @@ public class Player extends Person {
   public List<Transaction> transactions = new ArrayList<>();
 
   public Player() {
-    cash = 10000;
-    id = ThreadLocalRandom.current().nextLong(1, 100);
+    super(ThreadLocalRandom.current().nextLong(1, 100), null, 10000);
   }
 }
