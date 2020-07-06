@@ -115,4 +115,9 @@ public class JanuszCars implements RepairParts {
     car.gearbox = "ok";
     return car;
   }
+
+  @Override
+  public boolean isRepairSuccessful() {
+    return true;
+  }
 }

@@ -13,4 +13,6 @@ public interface RepairParts {
   public Car repairCarBody(Player player, Car car);
 
   public Car repairGearbox(Player player, Car car);
+
+  public boolean isRepairSuccessful();
 }
