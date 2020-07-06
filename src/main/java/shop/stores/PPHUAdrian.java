@@ -2,10 +2,10 @@ package shop.stores;
 
 import java.util.concurrent.ThreadLocalRandom;
 import shop.cars.Car;
-import shop.cars.RepairParts;
-import shop.players.Player;
+import shop.cars.Workshop;
+import shop.persons.Player;
 
-public class PPHUAdrian implements RepairParts {
+public class PPHUAdrian implements Workshop {
 
   public static final int BRAKES_PRICE = 5;
   public static final int DAMPERS_PRICE = 10;
@@ -16,8 +16,14 @@ public class PPHUAdrian implements RepairParts {
   public static final int STORE_STANDARD_PRICE = 20;
   public static final int STORE_BUDGET_PRICE = 5;
 
+  public long workshopId;
+
+  public PPHUAdrian(long workshopId) {
+    this.workshopId = workshopId;
+  }
+
   @Override
-  public Car repairBrakes(Player player, Car car) {
+  public void repairBrakes(Player player, Car car) {
     player.cash = player.cash - BRAKES_PRICE;
 
 
@@ -35,6 +41,7 @@ public class PPHUAdrian implements RepairParts {
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.10;
       car.brakes = "ok";
+      System.out.println("We've successfully repaired your car :)");
     } else {
       if (!areOtherParsFine()) {
         System.out.println("Sorry! We also broke your dampers :(");
@@ -43,11 +50,10 @@ public class PPHUAdrian implements RepairParts {
       }
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");
     }
-    return car;
   }
 
   @Override
-  public Car repairDampers(Player player, Car car) {
+  public void repairDampers(Player player, Car car) {
     player.cash = player.cash - DAMPERS_PRICE;
 
     if (car.segment.equals("premium")) {
@@ -64,6 +70,7 @@ public class PPHUAdrian implements RepairParts {
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.20;
       car.dampers = "ok";
+      System.out.println("We've successfully repaired your car :)");
     } else {
       if (!areOtherParsFine()) {
         System.out.println("Sorry! We also broke your brakes :(");
@@ -72,11 +79,10 @@ public class PPHUAdrian implements RepairParts {
       }
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");
     }
-    return car;
   }
 
   @Override
-  public Car repairEngine(Player player, Car car) {
+  public void repairEngine(Player player, Car car) {
     player.cash = player.cash - ENGINE_PRICE;
 
     if (car.segment.equals("premium")) {
@@ -93,6 +99,7 @@ public class PPHUAdrian implements RepairParts {
     if (isRepairSuccessful()) {
       car.value = car.value * 2;
       car.engine = "ok";
+      System.out.println("We've successfully repaired your car :)");
     } else {
       if (!areOtherParsFine()) {
         System.out.println("Sorry! We also broke your car body :(");
@@ -102,11 +109,10 @@ public class PPHUAdrian implements RepairParts {
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");
     }
 
-    return car;
   }
 
   @Override
-  public Car repairCarBody(Player player, Car car) {
+  public void repairCarBody(Player player, Car car) {
     player.cash = player.cash - CAR_BODY_PRICE;
 
     if (car.segment.equals("premium")) {
@@ -123,6 +129,7 @@ public class PPHUAdrian implements RepairParts {
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.50;
       car.carBody = "ok";
+      System.out.println("We've successfully repaired your car :)");
     } else {
       if (!areOtherParsFine()) {
         System.out.println("Sorry! We also broke your gearbox :(");
@@ -132,11 +139,10 @@ public class PPHUAdrian implements RepairParts {
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");
     }
 
-    return car;
   }
 
   @Override
-  public Car repairGearbox(Player player, Car car) {
+  public void repairGearbox(Player player, Car car) {
     player.cash = player.cash - CAR_GEARBOX;
 
     if (car.segment.equals("premium")) {
@@ -153,6 +159,7 @@ public class PPHUAdrian implements RepairParts {
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.50;
       car.gearbox = "ok";
+      System.out.println("We've successfully repaired your car :)");
     } else {
       if (!areOtherParsFine()) {
         System.out.println("Sorry! We also broke your engine :(");
@@ -162,7 +169,6 @@ public class PPHUAdrian implements RepairParts {
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");
     }
 
-    return car;
   }
 
   @Override
@@ -172,5 +178,21 @@ public class PPHUAdrian implements RepairParts {
 
   public boolean areOtherParsFine() {
     return ThreadLocalRandom.current().nextInt(0, 100 + 1) > 2;
+  }
+
+  @Override
+  public long workshopId() {
+    return workshopId;
+  }
+
+  @Override
+  public String workshopDescription() {
+    return "Lowest prices available! We guarantee 80% of your money, " +
+        "there's 20% chance of failure in your repair and a very low chance we break another piece";
+  }
+
+  @Override
+  public String toString() {
+    return "Id: " + workshopId + "\n Description:" + workshopDescription();
   }
 }

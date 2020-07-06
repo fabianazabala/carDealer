@@ -1,7 +1,11 @@
 package shop.cars;
 
+import shop.persons.Person;
+
 public abstract class Car extends CarParts {
+
   public long carId;
+  public Person owner;
   public double value;
   public String brand;
   public double mileage;

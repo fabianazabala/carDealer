@@ -1,10 +1,7 @@
-package shop.clients;
+package shop.persons;
 
-public class Client {
+public class Client extends Person {
 
-  public long id;
-  public String name;
-  public double cash;
   public String carTypePreference;
   public String brandPreference;
   public String segmentPreference;

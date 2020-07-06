@@ -2,10 +2,11 @@ package shop;
 
 import java.util.Scanner;
 import shop.cars.Car;
-import shop.clients.Client;
+import shop.cars.Workshop;
 import shop.database.CarService;
 import shop.database.ClientService;
-import shop.players.Player;
+import shop.persons.Client;
+import shop.persons.Player;
 import shop.transactions.Transaction;
 
 public class MainMenu {
@@ -16,48 +17,27 @@ public class MainMenu {
     ClientService clientService = new ClientService();
 
     Player player = new Player();
+    System.out.println("Hi :) Welcome to the car dealer game! Please enter your name: \n");
+    player.name = in.nextLine();
+
 
     int nextOption = 0;
     while (nextOption != 99) {
       printMainMenuOptions();
       nextOption = in.nextInt();
       switch (nextOption) {
-        case 1:
-          listAvailableCars(carService);
-          break;
-        case 2:
-          buyCar(in, carService);
-          break;
-        case 3:
-          listMyCars(player);
-          break;
-        case 4:
-          repairCar(in, carService);
-          break;
-        case 5:
-          viewPotentialClients(clientService);
-          break;
-        case 6:
-          sellCarToClient(in, carService, clientService);
-          break;
-        case 7:
-          buyAdvertisement(clientService);
-          break;
-        case 8:
-          checkAccountBalance(player);
-          break;
-        case 9:
-          checkTransactionHistory(player);
-          break;
-        case 10:
-          checkCarRepairHistory(in, carService);
-          break;
-        case 11:
-          checkCarExpenses(in, carService);
-          break;
-        default:
-          System.out.println("That's an invalid option! Try again");
-          break;
+        case 1 -> listAvailableCars(carService);
+        case 2 -> buyCar(in, player, carService);
+        case 3 -> listMyCars(player);
+        case 4 -> repairCar(in, carService, player);
+        case 5 -> viewPotentialClients(clientService);
+        case 6 -> sellCarToClient(in, player, carService, clientService);
+        case 7 -> buyAdvertisement(clientService, player, in);
+        case 8 -> checkAccountBalance(player);
+        case 9 -> checkTransactionHistory(player);
+        case 10 -> checkCarRepairHistory(in, carService);
+        case 11 -> checkCarExpenses(in, carService);
+        default -> System.out.println("That's an invalid option! Try again");
       }
     }
     System.out.println("Thanks for playing :) See you!");
@@ -98,11 +78,15 @@ public class MainMenu {
     System.out.println("Your current balance is: " + player.cash);
   }
 
-  private static void buyAdvertisement(ClientService clientService) {
-    clientService.buyAdvertisement();
+  private static void buyAdvertisement(ClientService clientService, Player player, Scanner in) {
+    System.out
+        .println("How much you'd like to spend in advertisement? The more you invest the more clients you'll get");
+    double amount = in.nextDouble();
+    clientService.buyAdvertisement(player, amount);
   }
 
   private static void sellCarToClient(Scanner in,
+                                      Player player,
                                       CarService carService,
                                       ClientService clientService) {
     System.out.println("Enter buyer's id:\n");
@@ -111,7 +95,7 @@ public class MainMenu {
     System.out.println("Enter car's id:\n");
     long carId = in.nextLong();
     Car toSell = carService.getCar(carId);
-    carService.sellCar(toSell, buyer);
+    carService.sellCar(toSell, buyer, player);
   }
 
   private static void viewPotentialClients(ClientService clientService) {
@@ -122,10 +106,34 @@ public class MainMenu {
     }
   }
 
-  private static void repairCar(Scanner in, CarService carService) {
-    System.out.println("Please enter car id: ");
+  private static void repairCar(Scanner in, CarService carService, Player player) {
+    System.out.println("Please select which workshop you'd like to use:\n");
+    for (Workshop workshop : carService.listAvailableWorkshops()) {
+      System.out.println("\n");
+      System.out.println(workshop);
+    }
+
+    long workshopId = in.nextLong();
+
+    System.out.println("Please enter id of the car to repair: ");
     long carId = in.nextLong();
-    carService.repairCar(carId);
+
+    System.out.println("---------------------------------");
+    System.out.println("Please select what you'd like to repair: ");
+    System.out.println("1. Brakes");
+    System.out.println("2. Car Body");
+    System.out.println("3. Dampers");
+    System.out.println("4. Engine");
+    System.out.println("5. Gearbox");
+    System.out.println("---------------------------------");
+    int repairOption = in.nextInt();
+    switch (repairOption) {
+      case 1 -> carService.repairBrakes(player, workshopId, carId);
+      case 2 -> carService.repairCarBody(player, workshopId, carId);
+      case 3 -> carService.repairDampers(player, workshopId, carId);
+      case 4 -> carService.repairEngine(player, workshopId, carId);
+      case 5 -> carService.repairGearbox(player, workshopId, carId);
+    }
   }
 
   private static void listMyCars(Player player) {
@@ -136,10 +144,10 @@ public class MainMenu {
     }
   }
 
-  private static void buyCar(Scanner in, CarService carService) {
+  private static void buyCar(Scanner in, Player player, CarService carService) {
     System.out.println("Please enter car id: ");
     long carId = in.nextLong();
-    carService.buyCar(carId);
+    carService.buyCar(player, carId);
   }
 
   private static void listAvailableCars(CarService carService) {

@@ -1,10 +1,10 @@
 package shop.stores;
 
 import shop.cars.Car;
-import shop.cars.RepairParts;
-import shop.players.Player;
+import shop.cars.Workshop;
+import shop.persons.Player;
 
-public class JanuszCars implements RepairParts {
+public class JanuszCars implements Workshop {
 
   public static final int BRAKES_PRICE = 20;
   public static final int DAMPERS_PRICE = 30;
@@ -15,8 +15,15 @@ public class JanuszCars implements RepairParts {
   public static final int STORE_STANDARD_PRICE = 50;
   public static final int STORE_BUDGET_PRICE = 20;
 
+  public long workshopId;
+
+  public JanuszCars(long workshopId) {
+    this.workshopId = workshopId;
+  }
+
+
   @Override
-  public Car repairBrakes(Player player, Car car) {
+  public void repairBrakes(Player player, Car car) {
     player.cash = player.cash - BRAKES_PRICE;
 
 
@@ -33,11 +40,11 @@ public class JanuszCars implements RepairParts {
 
     car.value = car.value + car.value * 0.10;
     car.brakes = "ok";
-    return car;
+    System.out.println("We've successfully repaired your car :)");
   }
 
   @Override
-  public Car repairDampers(Player player, Car car) {
+  public void repairDampers(Player player, Car car) {
     player.cash = player.cash - DAMPERS_PRICE;
 
     if (car.segment.equals("premium")) {
@@ -53,11 +60,11 @@ public class JanuszCars implements RepairParts {
 
     car.value = car.value + car.value * 0.20;
     car.dampers = "ok";
-    return car;
+    System.out.println("We've successfully repaired your car :)");
   }
 
   @Override
-  public Car repairEngine(Player player, Car car) {
+  public void repairEngine(Player player, Car car) {
     player.cash = player.cash - ENGINE_PRICE;
 
     if (car.segment.equals("premium")) {
@@ -73,11 +80,12 @@ public class JanuszCars implements RepairParts {
 
     car.value = car.value * 2;
     car.engine = "ok";
-    return car;
+    System.out.println("We've successfully repaired your car :)");
+
   }
 
   @Override
-  public Car repairCarBody(Player player, Car car) {
+  public void repairCarBody(Player player, Car car) {
     player.cash = player.cash - CAR_BODY_PRICE;
 
     if (car.segment.equals("premium")) {
@@ -93,11 +101,11 @@ public class JanuszCars implements RepairParts {
 
     car.value = car.value + car.value * 0.50;
     car.carBody = "ok";
-    return car;
+    System.out.println("We've successfully repaired your car :)");
   }
 
   @Override
-  public Car repairGearbox(Player player, Car car) {
+  public void repairGearbox(Player player, Car car) {
     player.cash = player.cash - CAR_GEARBOX;
 
     if (car.segment.equals("premium")) {
@@ -113,11 +121,27 @@ public class JanuszCars implements RepairParts {
 
     car.value = car.value + car.value * 0.50;
     car.gearbox = "ok";
-    return car;
+    System.out.println("We've successfully repaired your car :)");
+
   }
 
   @Override
   public boolean isRepairSuccessful() {
     return true;
+  }
+
+  @Override
+  public long workshopId() {
+    return workshopId;
+  }
+
+  @Override
+  public String workshopDescription() {
+    return "Best service available! Highly talented professionals! We guarantee 100% of your money";
+  }
+
+  @Override
+  public String toString() {
+    return "Id: " + workshopId + "\n Description:" + workshopDescription();
   }
 }

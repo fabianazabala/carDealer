@@ -2,7 +2,9 @@ package shop.database;
 
 import java.util.Collections;
 import java.util.List;
-import shop.clients.Client;
+import shop.persons.Client;
+import shop.persons.Player;
+import shop.transactions.Transaction;
 
 public class ClientService {
 
@@ -16,7 +18,14 @@ public class ClientService {
     return null;
   }
 
-  public void buyAdvertisement() {
-    //adds more clients to db?
+  public void buyAdvertisement(Player player, double amount) {
+    if (player.cash >= amount) {
+      //adds more clients to db?
+      Transaction transaction = new Transaction(-amount, "Bought more advertisement");
+      player.transactions.add(transaction);
+      System.out.println("You've successfully invest " + amount + " in advertisement!");
+    } else {
+      System.out.println("You don't have enough money to buy more advertisement :(");
+    }
   }
 }
