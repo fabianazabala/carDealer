@@ -10,15 +10,27 @@ public abstract class CarParts {
   public CarPartStatus gearbox;
 
   public CarParts() {
-    brakes = isPartWorking() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
-    dampers = isPartWorking() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
-    engine = isPartWorking() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
-    carBody = isPartWorking() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
-    gearbox = isPartWorking() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
+    brakes = randomBrokenPart() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
+    dampers = randomBrokenPart() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
+    engine = randomBrokenPart() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
+    carBody = randomBrokenPart() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
+    gearbox = randomBrokenPart() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
   }
 
-  private boolean isPartWorking() {
+  private boolean randomBrokenPart() {
     return ThreadLocalRandom.current().nextInt(0, 100) <= 20;
+  }
+
+  private boolean isPartBroken(CarPartStatus status) {
+    return status == CarPartStatus.NOT_OK;
+  }
+
+  public boolean isCarDamaged() {
+    return isPartBroken(brakes)
+        || isPartBroken(dampers)
+        || isPartBroken(engine)
+        || isPartBroken(carBody)
+        || isPartBroken(gearbox);
   }
 
   @Override
