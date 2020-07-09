@@ -2,7 +2,6 @@ package shop.stores;
 
 import shop.cars.Car;
 import shop.cars.CarPartStatus;
-import shop.cars.Workshop;
 import shop.persons.Player;
 
 public class JanuszCars implements Workshop {

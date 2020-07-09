@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import shop.cars.Car;
-import shop.cars.Workshop;
 import shop.database.CarService;
 import shop.database.ClientService;
 import shop.persons.Client;
 import shop.persons.Player;
+import shop.stores.Workshop;
 import shop.transactions.Transaction;
 
 public class MainMenu {

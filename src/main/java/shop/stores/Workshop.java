@@ -1,5 +1,6 @@
-package shop.cars;
+package shop.stores;
 
+import shop.cars.Car;
 import shop.persons.Player;
 
 public interface Workshop {

@@ -13,12 +13,12 @@ import shop.cars.Car;
 import shop.cars.CarPartStatus;
 import shop.cars.PassangerCar;
 import shop.cars.Truck;
-import shop.cars.Workshop;
 import shop.persons.Client;
 import shop.persons.Player;
 import shop.stores.JanuszCars;
 import shop.stores.MarianAuto;
 import shop.stores.PPHUAdrian;
+import shop.stores.Workshop;
 import shop.transactions.Transaction;
 
 public class CarService {

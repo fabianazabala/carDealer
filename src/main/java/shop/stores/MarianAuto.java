@@ -3,7 +3,6 @@ package shop.stores;
 import java.util.concurrent.ThreadLocalRandom;
 import shop.cars.Car;
 import shop.cars.CarPartStatus;
-import shop.cars.Workshop;
 import shop.persons.Player;
 
 public class MarianAuto implements Workshop {
