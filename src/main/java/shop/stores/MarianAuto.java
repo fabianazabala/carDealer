@@ -2,6 +2,7 @@ package shop.stores;
 
 import java.util.concurrent.ThreadLocalRandom;
 import shop.cars.Car;
+import shop.cars.CarPartStatus;
 import shop.cars.Workshop;
 import shop.persons.Player;
 
@@ -40,7 +41,7 @@ public class MarianAuto implements Workshop {
 
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.10;
-      car.brakes = "ok";
+      car.brakes = CarPartStatus.OK;
       System.out.println("We've successfully repaired your car :)");
     } else {
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");
@@ -64,7 +65,7 @@ public class MarianAuto implements Workshop {
 
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.20;
-      car.dampers = "ok";
+      car.dampers = CarPartStatus.OK;
       System.out.println("We've successfully repaired your car :)");
     } else {
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");
@@ -88,7 +89,7 @@ public class MarianAuto implements Workshop {
 
     if (isRepairSuccessful()) {
       car.value = car.value * 2;
-      car.engine = "ok";
+      car.engine = CarPartStatus.OK;
       System.out.println("We've successfully repaired your car :)");
     } else {
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");
@@ -113,7 +114,7 @@ public class MarianAuto implements Workshop {
 
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.50;
-      car.carBody = "ok";
+      car.carBody = CarPartStatus.OK;
       System.out.println("We've successfully repaired your car :)");
     } else {
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");
@@ -138,7 +139,7 @@ public class MarianAuto implements Workshop {
 
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.50;
-      car.gearbox = "ok";
+      car.gearbox = CarPartStatus.OK;
       System.out.println("We've successfully repaired your car :)");
     } else {
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");

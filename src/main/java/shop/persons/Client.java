@@ -15,4 +15,13 @@ public class Client extends Person {
     this.segmentPreference = segmentPreference;
     this.acceptDamaged = acceptDamaged;
   }
+
+  @Override
+  public String toString() {
+    return super.toString()
+        + ", Car Type preference: " + carTypePreference
+        + ", Brand preference: " + brandPreference
+        + ", Segment preference: " + segmentPreference
+        + ", Accepts damaged car: " + (acceptDamaged ? "yes" : "no");
+  }
 }

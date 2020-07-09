@@ -15,4 +15,12 @@ public abstract class Person {
     this.name = name;
     this.cash = cash;
   }
+
+  @Override
+  public String toString() {
+    return "Id: " + id
+        + ", Name: " + name
+        + ", Cash: " + cash
+        + ", Cars: " + cars;
+  }
 }

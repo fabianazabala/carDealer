@@ -2,6 +2,7 @@ package shop.stores;
 
 import java.util.concurrent.ThreadLocalRandom;
 import shop.cars.Car;
+import shop.cars.CarPartStatus;
 import shop.cars.Workshop;
 import shop.persons.Player;
 
@@ -40,12 +41,12 @@ public class PPHUAdrian implements Workshop {
 
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.10;
-      car.brakes = "ok";
+      car.brakes = CarPartStatus.OK;
       System.out.println("We've successfully repaired your car :)");
     } else {
       if (!areOtherParsFine()) {
         System.out.println("Sorry! We also broke your dampers :(");
-        car.dampers = "not ok";
+        car.dampers = CarPartStatus.NOT_OK;
         car.value = car.value - car.value * 0.20;
       }
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");
@@ -69,12 +70,12 @@ public class PPHUAdrian implements Workshop {
 
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.20;
-      car.dampers = "ok";
+      car.dampers = CarPartStatus.OK;
       System.out.println("We've successfully repaired your car :)");
     } else {
       if (!areOtherParsFine()) {
         System.out.println("Sorry! We also broke your brakes :(");
-        car.brakes = "not ok";
+        car.brakes = CarPartStatus.NOT_OK;
         car.value = car.value - car.value * 0.10;
       }
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");
@@ -98,12 +99,12 @@ public class PPHUAdrian implements Workshop {
 
     if (isRepairSuccessful()) {
       car.value = car.value * 2;
-      car.engine = "ok";
+      car.engine = CarPartStatus.OK;
       System.out.println("We've successfully repaired your car :)");
     } else {
       if (!areOtherParsFine()) {
         System.out.println("Sorry! We also broke your car body :(");
-        car.carBody = "not ok";
+        car.carBody = CarPartStatus.NOT_OK;
         car.value = car.value - car.value * 0.50;
       }
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");
@@ -128,12 +129,12 @@ public class PPHUAdrian implements Workshop {
 
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.50;
-      car.carBody = "ok";
+      car.carBody = CarPartStatus.OK;
       System.out.println("We've successfully repaired your car :)");
     } else {
       if (!areOtherParsFine()) {
         System.out.println("Sorry! We also broke your gearbox :(");
-        car.gearbox = "not ok";
+        car.gearbox = CarPartStatus.NOT_OK;
         car.value = car.value - car.value * 0.50;
       }
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");
@@ -158,12 +159,12 @@ public class PPHUAdrian implements Workshop {
 
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.50;
-      car.gearbox = "ok";
+      car.gearbox = CarPartStatus.OK;
       System.out.println("We've successfully repaired your car :)");
     } else {
       if (!areOtherParsFine()) {
         System.out.println("Sorry! We also broke your engine :(");
-        car.engine = "not ok";
+        car.engine = CarPartStatus.NOT_OK;
         car.value = car.value / 2;
       }
       throw new CarRepairFailException("We couldn't repair your car :( sorry!");

@@ -19,10 +19,19 @@ public class MainMenu {
     Player player = new Player();
     System.out.println("Hi :) Welcome to the car dealer game! Please enter your name: \n");
     player.name = in.nextLine();
-
-
+    double initialCash = player.cash;
+    System.out.println("Welcome " + player.name + " you've been granted an initial of " + player.cash + " in cash\n");
+    System.out.println("You'll win the game when your total cash is " + player.cash * 2 + " or more!");
     int nextOption = 0;
     while (nextOption != 99) {
+      if (player.cash >= (initialCash * 2)) {
+        System.out.println("Congratulations! You've doubled your cash, would you like to continue playing? \n");
+        System.out.println("Press 1 for Yes, Press 2 for No");
+        int continueGame = in.nextInt();
+        if (continueGame == 2) {
+          break;
+        }
+      }
       printMainMenuOptions();
       nextOption = in.nextInt();
       switch (nextOption) {

@@ -1,6 +1,7 @@
 package shop.stores;
 
 import shop.cars.Car;
+import shop.cars.CarPartStatus;
 import shop.cars.Workshop;
 import shop.persons.Player;
 
@@ -39,7 +40,7 @@ public class JanuszCars implements Workshop {
     }
 
     car.value = car.value + car.value * 0.10;
-    car.brakes = "ok";
+    car.brakes = CarPartStatus.OK;
     System.out.println("We've successfully repaired your car :)");
   }
 
@@ -59,7 +60,7 @@ public class JanuszCars implements Workshop {
     }
 
     car.value = car.value + car.value * 0.20;
-    car.dampers = "ok";
+    car.dampers = CarPartStatus.OK;
     System.out.println("We've successfully repaired your car :)");
   }
 
@@ -79,7 +80,7 @@ public class JanuszCars implements Workshop {
     }
 
     car.value = car.value * 2;
-    car.engine = "ok";
+    car.engine = CarPartStatus.OK;
     System.out.println("We've successfully repaired your car :)");
 
   }
@@ -100,7 +101,7 @@ public class JanuszCars implements Workshop {
     }
 
     car.value = car.value + car.value * 0.50;
-    car.carBody = "ok";
+    car.carBody = CarPartStatus.OK;
     System.out.println("We've successfully repaired your car :)");
   }
 
@@ -120,7 +121,7 @@ public class JanuszCars implements Workshop {
     }
 
     car.value = car.value + car.value * 0.50;
-    car.gearbox = "ok";
+    car.gearbox = CarPartStatus.OK;
     System.out.println("We've successfully repaired your car :)");
 
   }
