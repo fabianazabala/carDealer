@@ -10,11 +10,11 @@ public abstract class CarParts {
   public CarPartStatus gearbox;
 
   public CarParts() {
-    brakes = randomBrokenPart() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
-    dampers = randomBrokenPart() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
-    engine = randomBrokenPart() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
-    carBody = randomBrokenPart() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
-    gearbox = randomBrokenPart() ? CarPartStatus.OK : CarPartStatus.NOT_OK;
+    brakes = randomBrokenPart() ? CarPartStatus.NOT_OK : CarPartStatus.OK;
+    dampers = randomBrokenPart() ? CarPartStatus.NOT_OK : CarPartStatus.OK;
+    engine = randomBrokenPart() ? CarPartStatus.NOT_OK : CarPartStatus.OK;
+    carBody = randomBrokenPart() ? CarPartStatus.NOT_OK : CarPartStatus.OK;
+    gearbox = randomBrokenPart() ? CarPartStatus.NOT_OK : CarPartStatus.OK;
   }
 
   private boolean randomBrokenPart() {

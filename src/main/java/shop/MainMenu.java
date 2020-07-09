@@ -21,6 +21,9 @@ public class MainMenu {
     Player player = new Player();
     System.out.println("Hi :) Welcome to the car dealer game! Please enter your name: \n");
     player.name = in.nextLine();
+
+    System.out.println("Please enter the amount of cash you'd like to play with\n");
+    player.cash = in.nextDouble();
     double initialCash = player.cash;
     System.out.println("Welcome " + player.name + " you've been granted an initial of " + player.cash + " in cash\n");
     System.out.println("You'll win the game when your total cash is " + player.cash * 2 + " or more!");
