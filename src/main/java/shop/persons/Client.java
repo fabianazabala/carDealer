@@ -19,7 +19,7 @@ public class Client extends Person {
   }
 
   public boolean isInterested(Car car) {
-    return (car.isDamaged() && acceptDamaged)
+    return (!car.isDamaged() || (car.isDamaged() && acceptDamaged))
         && car.value <= cash
         && car.brand.equals(brandPreference)
         && car.carType().equals(carTypePreference)

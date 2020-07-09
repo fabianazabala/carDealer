@@ -51,10 +51,10 @@ public class MainMenu {
         case 9 -> checkTransactionHistory(player);
         case 10 -> checkCarRepairHistory(in, carService);
         case 11 -> checkCarExpenses(in, carService);
+        case 99 -> System.out.println("Thanks for playing :) See you!");
         default -> System.out.println("That's an invalid option! Try again");
       }
     }
-    System.out.println("Thanks for playing :) See you!");
   }
 
   private static void checkCarExpenses(Scanner in, CarService carService) {
