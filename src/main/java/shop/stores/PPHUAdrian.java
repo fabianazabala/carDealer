@@ -27,16 +27,10 @@ public class PPHUAdrian implements Workshop {
   public void repairBrakes(Player player, Car car) {
     player.cash = player.cash - BRAKES_PRICE;
 
-
-    if (car.segment.equals("premium")) {
-      player.cash = player.cash - STORE_PREMIUM_PRICE;
-
-    } else if (car.segment.equals("standard")) {
-      player.cash = player.cash - STORE_STANDARD_PRICE;
-
-
-    } else if (car.segment.equals("budget")) {
-      player.cash = player.cash - STORE_BUDGET_PRICE;
+    switch (car.segment) {
+      case "premium" -> player.cash = player.cash - STORE_PREMIUM_PRICE;
+      case "standard" -> player.cash = player.cash - STORE_STANDARD_PRICE;
+      case "budget" -> player.cash = player.cash - STORE_BUDGET_PRICE;
     }
 
     if (isRepairSuccessful()) {
@@ -49,7 +43,7 @@ public class PPHUAdrian implements Workshop {
         car.dampers = CarPartStatus.NOT_OK;
         car.value = car.value - car.value * 0.20;
       }
-      throw new CarRepairFailException("We couldn't repair your brakes :( sorry!");
+      System.out.println("We couldn't repair your brakes :( sorry!");
     }
   }
 
@@ -57,15 +51,10 @@ public class PPHUAdrian implements Workshop {
   public void repairDampers(Player player, Car car) {
     player.cash = player.cash - DAMPERS_PRICE;
 
-    if (car.segment.equals("premium")) {
-      player.cash = player.cash - STORE_PREMIUM_PRICE;
-
-    } else if (car.segment.equals("standard")) {
-      player.cash = player.cash - STORE_STANDARD_PRICE;
-
-
-    } else if (car.segment.equals("budget")) {
-      player.cash = player.cash - STORE_BUDGET_PRICE;
+    switch (car.segment) {
+      case "premium" -> player.cash = player.cash - STORE_PREMIUM_PRICE;
+      case "standard" -> player.cash = player.cash - STORE_STANDARD_PRICE;
+      case "budget" -> player.cash = player.cash - STORE_BUDGET_PRICE;
     }
 
     if (isRepairSuccessful()) {
@@ -78,7 +67,7 @@ public class PPHUAdrian implements Workshop {
         car.brakes = CarPartStatus.NOT_OK;
         car.value = car.value - car.value * 0.10;
       }
-      throw new CarRepairFailException("We couldn't repair your dampers :( sorry!");
+      System.out.println("We couldn't repair your dampers :( sorry!");
     }
   }
 
@@ -86,15 +75,10 @@ public class PPHUAdrian implements Workshop {
   public void repairEngine(Player player, Car car) {
     player.cash = player.cash - ENGINE_PRICE;
 
-    if (car.segment.equals("premium")) {
-      player.cash = player.cash - STORE_PREMIUM_PRICE;
-
-    } else if (car.segment.equals("standard")) {
-      player.cash = player.cash - STORE_STANDARD_PRICE;
-
-
-    } else if (car.segment.equals("budget")) {
-      player.cash = player.cash - STORE_BUDGET_PRICE;
+    switch (car.segment) {
+      case "premium" -> player.cash = player.cash - STORE_PREMIUM_PRICE;
+      case "standard" -> player.cash = player.cash - STORE_STANDARD_PRICE;
+      case "budget" -> player.cash = player.cash - STORE_BUDGET_PRICE;
     }
 
     if (isRepairSuccessful()) {
@@ -107,7 +91,7 @@ public class PPHUAdrian implements Workshop {
         car.carBody = CarPartStatus.NOT_OK;
         car.value = car.value - car.value * 0.50;
       }
-      throw new CarRepairFailException("We couldn't repair your engine :( sorry!");
+      System.out.println("We couldn't repair your engine :( sorry!");
     }
 
   }
@@ -116,15 +100,10 @@ public class PPHUAdrian implements Workshop {
   public void repairCarBody(Player player, Car car) {
     player.cash = player.cash - CAR_BODY_PRICE;
 
-    if (car.segment.equals("premium")) {
-      player.cash = player.cash - STORE_PREMIUM_PRICE;
-
-    } else if (car.segment.equals("standard")) {
-      player.cash = player.cash - STORE_STANDARD_PRICE;
-
-
-    } else if (car.segment.equals("budget")) {
-      player.cash = player.cash - STORE_BUDGET_PRICE;
+    switch (car.segment) {
+      case "premium" -> player.cash = player.cash - STORE_PREMIUM_PRICE;
+      case "standard" -> player.cash = player.cash - STORE_STANDARD_PRICE;
+      case "budget" -> player.cash = player.cash - STORE_BUDGET_PRICE;
     }
 
     if (isRepairSuccessful()) {
@@ -137,7 +116,7 @@ public class PPHUAdrian implements Workshop {
         car.gearbox = CarPartStatus.NOT_OK;
         car.value = car.value - car.value * 0.50;
       }
-      throw new CarRepairFailException("We couldn't repair your car body :( sorry!");
+      System.out.println("We couldn't repair your car body :( sorry!");
     }
 
   }
@@ -146,15 +125,10 @@ public class PPHUAdrian implements Workshop {
   public void repairGearbox(Player player, Car car) {
     player.cash = player.cash - CAR_GEARBOX;
 
-    if (car.segment.equals("premium")) {
-      player.cash = player.cash - STORE_PREMIUM_PRICE;
-
-    } else if (car.segment.equals("standard")) {
-      player.cash = player.cash - STORE_STANDARD_PRICE;
-
-
-    } else if (car.segment.equals("budget")) {
-      player.cash = player.cash - STORE_BUDGET_PRICE;
+    switch (car.segment) {
+      case "premium" -> player.cash = player.cash - STORE_PREMIUM_PRICE;
+      case "standard" -> player.cash = player.cash - STORE_STANDARD_PRICE;
+      case "budget" -> player.cash = player.cash - STORE_BUDGET_PRICE;
     }
 
     if (isRepairSuccessful()) {
@@ -167,7 +141,7 @@ public class PPHUAdrian implements Workshop {
         car.engine = CarPartStatus.NOT_OK;
         car.value = car.value / 2;
       }
-      throw new CarRepairFailException("We couldn't repair your gearbox :( sorry!");
+      System.out.println("We couldn't repair your gearbox :( sorry!");
     }
 
   }

@@ -36,7 +36,6 @@ public class CarService {
   }
 
   public List<Car> listAvailableCars() {
-    //from database as well
     return new ArrayList<>(cars.values());
   }
 

@@ -28,15 +28,10 @@ public class MarianAuto implements Workshop {
     player.cash = player.cash - BRAKES_PRICE;
 
 
-    if (car.segment.equals("premium")) {
-      player.cash = player.cash - STORE_PREMIUM_PRICE;
-
-    } else if (car.segment.equals("standard")) {
-      player.cash = player.cash - STORE_STANDARD_PRICE;
-
-
-    } else if (car.segment.equals("budget")) {
-      player.cash = player.cash - STORE_BUDGET_PRICE;
+    switch (car.segment) {
+      case "premium" -> player.cash = player.cash - STORE_PREMIUM_PRICE;
+      case "standard" -> player.cash = player.cash - STORE_STANDARD_PRICE;
+      case "budget" -> player.cash = player.cash - STORE_BUDGET_PRICE;
     }
 
     if (isRepairSuccessful()) {
@@ -44,7 +39,7 @@ public class MarianAuto implements Workshop {
       car.brakes = CarPartStatus.OK;
       System.out.println("We've successfully repaired your brakes :)");
     } else {
-      throw new CarRepairFailException("We couldn't repair your brakes :( sorry!");
+      System.out.println("We couldn't repair your brakes :( sorry!");
     }
   }
 
@@ -52,15 +47,10 @@ public class MarianAuto implements Workshop {
   public void repairDampers(Player player, Car car) {
     player.cash = player.cash - DAMPERS_PRICE;
 
-    if (car.segment.equals("premium")) {
-      player.cash = player.cash - STORE_PREMIUM_PRICE;
-
-    } else if (car.segment.equals("standard")) {
-      player.cash = player.cash - STORE_STANDARD_PRICE;
-
-
-    } else if (car.segment.equals("budget")) {
-      player.cash = player.cash - STORE_BUDGET_PRICE;
+    switch (car.segment) {
+      case "premium" -> player.cash = player.cash - STORE_PREMIUM_PRICE;
+      case "standard" -> player.cash = player.cash - STORE_STANDARD_PRICE;
+      case "budget" -> player.cash = player.cash - STORE_BUDGET_PRICE;
     }
 
     if (isRepairSuccessful()) {
@@ -68,7 +58,7 @@ public class MarianAuto implements Workshop {
       car.dampers = CarPartStatus.OK;
       System.out.println("We've successfully repaired your dampers :)");
     } else {
-      throw new CarRepairFailException("We couldn't repair your dampers :( sorry!");
+      System.out.println("We couldn't repair your dampers :( sorry!");
     }
   }
 
@@ -76,15 +66,10 @@ public class MarianAuto implements Workshop {
   public void repairEngine(Player player, Car car) {
     player.cash = player.cash - ENGINE_PRICE;
 
-    if (car.segment.equals("premium")) {
-      player.cash = player.cash - STORE_PREMIUM_PRICE;
-
-    } else if (car.segment.equals("standard")) {
-      player.cash = player.cash - STORE_STANDARD_PRICE;
-
-
-    } else if (car.segment.equals("budget")) {
-      player.cash = player.cash - STORE_BUDGET_PRICE;
+    switch (car.segment) {
+      case "premium" -> player.cash = player.cash - STORE_PREMIUM_PRICE;
+      case "standard" -> player.cash = player.cash - STORE_STANDARD_PRICE;
+      case "budget" -> player.cash = player.cash - STORE_BUDGET_PRICE;
     }
 
     if (isRepairSuccessful()) {
@@ -92,24 +77,18 @@ public class MarianAuto implements Workshop {
       car.engine = CarPartStatus.OK;
       System.out.println("We've successfully repaired your engine :)");
     } else {
-      throw new CarRepairFailException("We couldn't repair your engine :( sorry!");
+      System.out.println("We couldn't repair your engine :( sorry!");
     }
-
   }
 
   @Override
   public void repairCarBody(Player player, Car car) {
     player.cash = player.cash - CAR_BODY_PRICE;
 
-    if (car.segment.equals("premium")) {
-      player.cash = player.cash - STORE_PREMIUM_PRICE;
-
-    } else if (car.segment.equals("standard")) {
-      player.cash = player.cash - STORE_STANDARD_PRICE;
-
-
-    } else if (car.segment.equals("budget")) {
-      player.cash = player.cash - STORE_BUDGET_PRICE;
+    switch (car.segment) {
+      case "premium" -> player.cash = player.cash - STORE_PREMIUM_PRICE;
+      case "standard" -> player.cash = player.cash - STORE_STANDARD_PRICE;
+      case "budget" -> player.cash = player.cash - STORE_BUDGET_PRICE;
     }
 
     if (isRepairSuccessful()) {
@@ -117,24 +96,18 @@ public class MarianAuto implements Workshop {
       car.carBody = CarPartStatus.OK;
       System.out.println("We've successfully repaired your car body :)");
     } else {
-      throw new CarRepairFailException("We couldn't repair your car body :( sorry!");
+      System.out.println("We couldn't repair your car body :( sorry!");
     }
-
   }
 
   @Override
   public void repairGearbox(Player player, Car car) {
     player.cash = player.cash - CAR_GEARBOX;
 
-    if (car.segment.equals("premium")) {
-      player.cash = player.cash - STORE_PREMIUM_PRICE;
-
-    } else if (car.segment.equals("standard")) {
-      player.cash = player.cash - STORE_STANDARD_PRICE;
-
-
-    } else if (car.segment.equals("budget")) {
-      player.cash = player.cash - STORE_BUDGET_PRICE;
+    switch (car.segment) {
+      case "premium" -> player.cash = player.cash - STORE_PREMIUM_PRICE;
+      case "standard" -> player.cash = player.cash - STORE_STANDARD_PRICE;
+      case "budget" -> player.cash = player.cash - STORE_BUDGET_PRICE;
     }
 
     if (isRepairSuccessful()) {
@@ -142,9 +115,8 @@ public class MarianAuto implements Workshop {
       car.gearbox = CarPartStatus.OK;
       System.out.println("We've successfully repaired your gearbox :)");
     } else {
-      throw new CarRepairFailException("We couldn't repair your gearbox :( sorry!");
+      System.out.println("We couldn't repair your gearbox :( sorry!");
     }
-
   }
 
   @Override
