@@ -1,5 +1,7 @@
 package shop.persons;
 
+import shop.cars.Car;
+
 public class Client extends Person {
 
   public String carTypePreference;
@@ -14,6 +16,14 @@ public class Client extends Person {
     this.brandPreference = brandPreference;
     this.segmentPreference = segmentPreference;
     this.acceptDamaged = acceptDamaged;
+  }
+
+  public boolean isInterested(Car car) {
+    return (car.isDamaged() && acceptDamaged)
+        && car.value <= cash
+        && car.brand.equals(brandPreference)
+        && car.carType().equals(carTypePreference)
+        && car.segment.equals(segmentPreference);
   }
 
   @Override

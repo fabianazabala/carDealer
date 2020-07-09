@@ -25,7 +25,7 @@ public abstract class CarParts {
     return status == CarPartStatus.NOT_OK;
   }
 
-  public boolean isCarDamaged() {
+  public boolean isDamaged() {
     return isPartBroken(brakes)
         || isPartBroken(dampers)
         || isPartBroken(engine)

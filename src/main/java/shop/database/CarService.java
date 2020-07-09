@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import shop.cars.Car;
+import shop.cars.CarPartStatus;
 import shop.cars.PassangerCar;
 import shop.cars.Truck;
 import shop.cars.Workshop;
@@ -48,7 +49,7 @@ public class CarService {
       System.out.println("You cannot sell a car that's not yours! Don't steal :(");
       return;
     }
-    if (!clientIsInterested(toSell, buyer)) {
+    if (!buyer.isInterested(toSell)) {
       System.out.println("This client is not interested in buy your car :(");
       return;
     }
@@ -65,13 +66,6 @@ public class CarService {
     } else {
       System.out.println("This client doesn't have enough money to buy your car :(");
     }
-  }
-
-  private boolean clientIsInterested(Car toSell, Client buyer) {
-    return (toSell.isCarDamaged() && buyer.acceptDamaged)
-        && toSell.brand.equals(buyer.brandPreference)
-        && toSell.carType().equals(buyer.carTypePreference)
-        && toSell.segment.equals(buyer.segmentPreference);
   }
 
   public void buyCar(Player player, long carId) {
@@ -149,6 +143,26 @@ public class CarService {
     carRepairHistory.get(carId).add(transaction);
   }
 
+
+  public void repairDamagedParts(Player player, long workshopId, long carId) {
+    Car car = getCar(carId);
+    if (car.brakes == CarPartStatus.NOT_OK) {
+      repairBrakes(player, workshopId, carId);
+    }
+    if (car.carBody == CarPartStatus.NOT_OK) {
+      repairCarBody(player, workshopId, carId);
+    }
+    if (car.dampers == CarPartStatus.NOT_OK) {
+      repairDampers(player, workshopId, carId);
+    }
+    if (car.engine == CarPartStatus.NOT_OK) {
+      repairEngine(player, workshopId, carId);
+    }
+    if (car.gearbox == CarPartStatus.NOT_OK) {
+      repairGearbox(player, workshopId, carId);
+    }
+  }
+
   public Collection<Workshop> listAvailableWorkshops() {
     return availableWorkshops.values();
   }
@@ -157,7 +171,7 @@ public class CarService {
     return carRepairHistory.get(carId);
   }
 
-  public List<Car> getAllCars() {
+  private List<Car> getAllCars() {
     List<Car> allCars = new ArrayList<>();
     try (Connection connection = Connector.connect()) {
       ResultSet result = connection.createStatement()

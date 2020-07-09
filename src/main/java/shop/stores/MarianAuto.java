@@ -42,9 +42,9 @@ public class MarianAuto implements Workshop {
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.10;
       car.brakes = CarPartStatus.OK;
-      System.out.println("We've successfully repaired your car :)");
+      System.out.println("We've successfully repaired your brakes :)");
     } else {
-      throw new CarRepairFailException("We couldn't repair your car :( sorry!");
+      throw new CarRepairFailException("We couldn't repair your brakes :( sorry!");
     }
   }
 
@@ -66,9 +66,9 @@ public class MarianAuto implements Workshop {
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.20;
       car.dampers = CarPartStatus.OK;
-      System.out.println("We've successfully repaired your car :)");
+      System.out.println("We've successfully repaired your dampers :)");
     } else {
-      throw new CarRepairFailException("We couldn't repair your car :( sorry!");
+      throw new CarRepairFailException("We couldn't repair your dampers :( sorry!");
     }
   }
 
@@ -90,9 +90,9 @@ public class MarianAuto implements Workshop {
     if (isRepairSuccessful()) {
       car.value = car.value * 2;
       car.engine = CarPartStatus.OK;
-      System.out.println("We've successfully repaired your car :)");
+      System.out.println("We've successfully repaired your engine :)");
     } else {
-      throw new CarRepairFailException("We couldn't repair your car :( sorry!");
+      throw new CarRepairFailException("We couldn't repair your engine :( sorry!");
     }
 
   }
@@ -115,9 +115,9 @@ public class MarianAuto implements Workshop {
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.50;
       car.carBody = CarPartStatus.OK;
-      System.out.println("We've successfully repaired your car :)");
+      System.out.println("We've successfully repaired your car body :)");
     } else {
-      throw new CarRepairFailException("We couldn't repair your car :( sorry!");
+      throw new CarRepairFailException("We couldn't repair your car body :( sorry!");
     }
 
   }
@@ -140,9 +140,9 @@ public class MarianAuto implements Workshop {
     if (isRepairSuccessful()) {
       car.value = car.value + car.value * 0.50;
       car.gearbox = CarPartStatus.OK;
-      System.out.println("We've successfully repaired your car :)");
+      System.out.println("We've successfully repaired your gearbox :)");
     } else {
-      throw new CarRepairFailException("We couldn't repair your car :( sorry!");
+      throw new CarRepairFailException("We couldn't repair your gearbox :( sorry!");
     }
 
   }

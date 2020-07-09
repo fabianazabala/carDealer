@@ -41,7 +41,7 @@ public class JanuszCars implements Workshop {
 
     car.value = car.value + car.value * 0.10;
     car.brakes = CarPartStatus.OK;
-    System.out.println("We've successfully repaired your car :)");
+    System.out.println("We've successfully repaired your brakes :)");
   }
 
   @Override
@@ -61,7 +61,7 @@ public class JanuszCars implements Workshop {
 
     car.value = car.value + car.value * 0.20;
     car.dampers = CarPartStatus.OK;
-    System.out.println("We've successfully repaired your car :)");
+    System.out.println("We've successfully repaired your dampers :)");
   }
 
   @Override
@@ -81,7 +81,7 @@ public class JanuszCars implements Workshop {
 
     car.value = car.value * 2;
     car.engine = CarPartStatus.OK;
-    System.out.println("We've successfully repaired your car :)");
+    System.out.println("We've successfully repaired your engine :)");
 
   }
 
@@ -102,7 +102,7 @@ public class JanuszCars implements Workshop {
 
     car.value = car.value + car.value * 0.50;
     car.carBody = CarPartStatus.OK;
-    System.out.println("We've successfully repaired your car :)");
+    System.out.println("We've successfully repaired your car body :)");
   }
 
   @Override
@@ -122,7 +122,7 @@ public class JanuszCars implements Workshop {
 
     car.value = car.value + car.value * 0.50;
     car.gearbox = CarPartStatus.OK;
-    System.out.println("We've successfully repaired your car :)");
+    System.out.println("We've successfully repaired your gearbox :)");
 
   }
 

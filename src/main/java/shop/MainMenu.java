@@ -1,6 +1,8 @@
 package shop;
 
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import shop.cars.Car;
 import shop.cars.Workshop;
 import shop.database.CarService;
@@ -39,7 +41,7 @@ public class MainMenu {
         case 2 -> buyCar(in, player, carService);
         case 3 -> listMyCars(player);
         case 4 -> repairCar(in, carService, player);
-        case 5 -> viewPotentialClients(clientService);
+        case 5 -> viewPotentialClients(clientService, player);
         case 6 -> sellCarToClient(in, player, carService, clientService);
         case 7 -> buyAdvertisement(clientService, player, in);
         case 8 -> checkAccountBalance(player);
@@ -101,17 +103,33 @@ public class MainMenu {
     System.out.println("Enter buyer's id:\n");
     long buyerId = in.nextLong();
     Client buyer = clientService.getClient(buyerId);
-    System.out.println("Enter car's id:\n");
+
+    List<Car> potentialCars = player.cars.stream().filter(buyer::isInterested).collect(Collectors.toList());
+    if (potentialCars.isEmpty()) {
+      System.out.println("This client is not interested in any of your cars");
+      return;
+    }
+
+    System.out.println("This buyer is interested in buy cars: ");
+    for (Car car : potentialCars) {
+      System.out.println("\n");
+      System.out.println(car);
+    }
+
+    System.out.println("\nEnter id of car to sell:\n");
     long carId = in.nextLong();
     Car toSell = carService.getCar(carId);
     carService.sellCar(toSell, buyer, player);
   }
 
-  private static void viewPotentialClients(ClientService clientService) {
+  private static void viewPotentialClients(ClientService clientService, Player player) {
     System.out.println("List of potential clients: ");
     for (Client client : clientService.potentialClients()) {
-      System.out.println("\n");
-      System.out.println(client);
+      boolean isInterested = player.cars.stream().anyMatch(client::isInterested);
+      if (isInterested) {
+        System.out.println("\n");
+        System.out.println(client);
+      }
     }
   }
 
@@ -134,6 +152,7 @@ public class MainMenu {
     System.out.println("3. Dampers");
     System.out.println("4. Engine");
     System.out.println("5. Gearbox");
+    System.out.println("6. All damaged parts");
     System.out.println("---------------------------------");
     int repairOption = in.nextInt();
     switch (repairOption) {
@@ -142,6 +161,7 @@ public class MainMenu {
       case 3 -> carService.repairDampers(player, workshopId, carId);
       case 4 -> carService.repairEngine(player, workshopId, carId);
       case 5 -> carService.repairGearbox(player, workshopId, carId);
+      case 6 -> carService.repairDamagedParts(player, workshopId, carId);
     }
   }
 

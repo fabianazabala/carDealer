@@ -24,12 +24,10 @@ public class ClientService {
   }
 
   public List<Client> potentialClients() {
-    //from db?
     return new ArrayList<>(allClients.values());
   }
 
   public Client getClient(long clientId) {
-    //from db?
     return allClients.get(clientId);
   }
 
@@ -56,7 +54,7 @@ public class ClientService {
     try (Connection connection = Connector.connect()) {
       ResultSet result = connection.createStatement()
           .executeQuery(
-              "SELECT id, name, cash, brand_preference, car_type_preference, segment_preference, accepts_damaged" +
+              "SELECT id, name, cash, brand_preference, car_type_preference, segment_preference, accepts_damaged " +
                   "FROM public.client");
       while (result.next()) {
         initialClients.add(new Client(result.getLong("id"),
